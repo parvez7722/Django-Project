@@ -1,0 +1,62 @@
+<style>
+    .logIn {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        margin: 30px;
+    }
+
+    .formlogsubmitbtn{
+        display: flex;
+        justify-content: center;
+        font-size: xx-large;
+        padding-top: 10px;
+    }
+
+    .loginform {
+        display:inline-block;   
+        font-size: medium;
+        padding:30px 50px 30px 30px;
+        border: hsl(218, 100%, 28%) solid 2px;
+        border-radius: 5px;
+        background-color: hsl(209, 60%, 93%);
+    }
+
+    .formlogInput {
+        font-size:larger;
+        text-align: end;
+        padding: 10px 10px 0 10px;
+    }
+</style>
+
+{% extends "base.html" %}
+
+{% block title %}Login | {% endblock%}
+
+{% block content %}
+<div class="logIn">
+    <form method="POST" action="" class="loginform">
+        {% csrf_token %}
+        <div class="formlogInput">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required>
+        </div>
+        <br>
+        <div class="formlogInput">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <br>
+        <div class="formlogsubmitbtn">
+            <input type="submit" value="Submit" name="formlogincreation" style="font-size: large;color: aliceblue;background-color: hsl(218, 64%, 40%);cursor: pointer;padding: 10px;font-weight: 600;border-radius: 5px;border: none;">
+        </div>
+    </form>
+</div>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock content %}

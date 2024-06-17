@@ -1,0 +1,49 @@
+<style>
+    .navHead {
+        margin: 2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px 0 15px;
+    }
+
+    .nav {
+        color: hsl(212, 100%, 30%);
+        font-size: larger;
+        margin: 0 20px;
+        text-decoration: none;
+    }
+
+    .Heading {
+        color: hsl(212, 100%, 30%);
+        font-size: 40px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 700;
+        pointer-events: none;
+    }
+
+    .navgap {
+        margin-left: auto;
+    }
+</style>
+
+
+<div class="navHead">
+    <a class="Heading">Sample Django</a>
+<section class="navgap">
+    <a class="nav" href="{% url 'home' %}">Home</a>
+    <a class="nav" href="{% url 'product' %}">Products</a>
+    <a class="nav" href="{% url 'contact' %}">Contact</a>
+
+    {% if request.user.is_authenticated %}
+    <a class="nav" href="{% url "new" %}">Add Items</a>
+    <a class="nav" href="{% url "logout" %}">Logout</a>
+    {% else %}
+    <a class="nav" href="{% url "signup" %}">Sign Up</a>    
+    <a class="nav" href="{% url 'login' %}">Login</a>
+    {% endif %}
+</section>
+</div>
+<hr>

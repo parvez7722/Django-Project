@@ -1,0 +1,59 @@
+<style>
+    .headerForproducts{
+        text-align: center;
+        width: 100%;
+    }
+
+    .mainItemholder{
+        display: flex;
+        flex-wrap: wrap; /* Add this line */
+        justify-content: center; /* Optional: to center the items */
+        padding: 20px;
+    }
+
+    .itemContainer{
+        display: flex;
+        flex-direction: column; /* Adjusts the alignment inside the item container */
+        border: solid black 2px;
+        text-align: center;
+        width: 250px;
+        padding: 20px;
+        margin: 10px; /* Add margin to ensure space between items */
+    }
+
+    .holder{
+        margin: 20px;
+        display: flex;
+        flex-direction: column; /* Ensure column layout for the holder */
+        align-items: center; /* Center align the holder contents */
+    }
+
+    .itemOfProduct{
+        text-decoration: none;
+        color : black;
+    }
+
+</style>
+
+
+{% extends 'base.html' %}
+
+{% block title %}Products | {% endblock %}
+
+{% block content%}
+<div class="holder">
+    <h1 class="headerForproducts">Products</h1>
+    <div class="mainItemholder">
+        {% for item in product %}
+            <div class="itemContainer">
+                <a class="itemOfProduct" href="{% url 'detail' item.id %}">
+                    <h2 style="color: hsl(216, 100%, 20%);">{{item.product_name}}</h2>
+                    <p style="font-weight: 500; font-size: large;" name="Category"><label for="Category">Category :</label>{{item.product_categorie}}</p>
+                    <p style="font-weight: 500; font-size: large;" name="about"><label for="about">About: </label>{{item.product_description}}</p>
+                    <p style="font-weight: 500; font-size: large;" name="price"><label for="price">Price: </label>{{item.product_price}}</p>
+                </a>
+            </div>    
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}

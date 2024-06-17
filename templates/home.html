@@ -1,0 +1,29 @@
+<style>
+    .alert-primary{
+        background-color: rgba(141, 171, 255, 0.797);
+        padding: 10px;
+    }
+</style>
+
+{% extends "base.html" %}
+
+{% block title %}Welcome | {% endblock %}
+
+{% block content %}
+    <div>
+        {% if messages %}
+            {% for message in messages  %}
+                <p class="messageTxt">
+                    <div class="alert-primary">
+                        {{message}}
+                    </div>
+                </p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        <h1>This is the header page</h1>
+        <p>This is a django program for creating a market place</p>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{item.product_name }} | {% endblock %}
+
+{% block content %}
+    <div>
+        <p>{{item.product_name}}</p>
+        <p>{{item.product_description}}</p>
+        <p>{{item.product_price}}</p>
+        {% if request.user == item.product_user %}
+            <a href="{% url "delete" item.id %}"> Delete</a> 
+            <p>this is your item</p>   
+        {% endif %}
+    </div>
+{% endblock %}

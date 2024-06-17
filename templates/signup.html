@@ -1,0 +1,77 @@
+<style>
+    .signUp {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        margin: 30px;
+    }
+
+    .formsubmitbtn{
+        display: flex;
+        justify-content: center;
+        font-size: xx-large;
+    }
+
+    .signupform {
+        display:inline-block;   
+        font-size: medium;
+        padding:30px 50px 30px 30px;
+        border: hsl(218, 100%, 28%) solid 2px;
+        border-radius: 5px;
+        background-color: hsl(209, 60%, 93%);
+    }
+
+    .forminput {
+        font-size:larger;
+        text-align: end;
+    }
+
+    .messageTxt {
+        text-align: center;
+        font-weight: 600;
+        font-size: larger;
+    }
+</style>
+
+{% extends "base.html" %}
+
+{% block title %}Sign Up | {% endblock%}
+
+{% block content %}
+<div class = "signUp">
+<form method = "POST" action="" class="signupform">
+    {% csrf_token %}
+    <div class="formInput">
+        {{form.username.label}}
+        {{form.username}}
+    </div>
+    <br>
+    <div class="formInput">
+        {{form.email.label}}
+        {{form.email}}
+    </div>
+    <br>
+    <div class="formInput">
+        {{form.password1.label}}
+        {{form.password1}}
+    </div>
+    <br>
+    <div class="formInput">
+        {{form.password2.label}}
+        {{form.password2}}
+    </div>
+    <br>
+    {% if messages %}
+        {% for message in messages  %}
+            <p class="messageTxt">
+                {{message}}
+            </p>
+        {% endfor %}
+    {% endif %}
+    <div class="formsubmitbtn">
+    <input type="submit" value="Submit" name="formcreation" style="font-size: large;color: aliceblue;background-color: hsl(218, 64%, 40%) ;cursor: pointer;padding: 10px;font-weight: 600;border-radius: 5px;border: none;">
+    </div>
+</form>
+</div>
+{% endblock content %}
+
